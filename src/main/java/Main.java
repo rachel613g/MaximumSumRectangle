@@ -1,15 +1,33 @@
+
+import java.io.File;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
+        try {
 
-        int arr[][] = new int[][]{
-                {-1, -2, -1, -4, -20},
-                {-8, -3, -4, -2, -1},
-                {-3, -8, -10, -1, -3},
-                {-4, -1, -1, -7, -6}};
+            Scanner scanner = new Scanner(new File(args[0]));
 
-        // Function call
-        System.out.println(MaxSum.MaximumSumRectangle.maxSumRectangle(arr));
+            int dimension = scanner.nextInt();
+
+            int[][] matrix = new int[dimension][dimension];
+            while (scanner.hasNextInt()) {
+
+                for (int i = 0; i < dimension; i++) {
+                    for (int j = 0; j < dimension; j++) {
+
+                        matrix[i][j] = scanner.nextInt();
+
+                    }
+                }
+            }
+            // Function call
+            System.out.println(MaxSum.MaximumSumRectangle.maxSumRectangle(matrix));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
+
 
