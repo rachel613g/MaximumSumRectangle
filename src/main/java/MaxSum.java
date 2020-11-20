@@ -6,15 +6,14 @@ public class MaxSum {
     //Java Program to find max sum rectangular submatrix
     static class MaximumSumRectangle {
 
-        // Function to find maximum sum rectangular
-        // submatrix
+        // Function to find maximum sum rectangular submatrix
         public static int maxSumRectangle(int[][] mat) {
             int totalRows = mat.length;
             int totalColumns = mat[0].length;
 
             //running column totals
             int preSum[][] = new int[totalRows + 1][totalColumns];
-            boolean allNegative = true;
+           boolean allNegative = true;
             for (int i = 0; i < totalRows; i++) { //perhaps change to just start with second
                 for (int j = 0; j < totalColumns; j++) {
                         if(mat[i][j]>0){
@@ -25,6 +24,18 @@ public class MaxSum {
                     System.out.print(preSum[i + 1][j] + "    ");
                 }
                 System.out.println("\n");
+            }
+
+            if(allNegative){
+                int max = Integer.MIN_VALUE;
+                for (int i = 0; i < totalRows; i++) {
+                    for (int j = 0; j < totalColumns ; j++) {
+                        if(mat[i][j]>max){
+                            max=mat[i][j];
+                        }
+                    }
+                }
+                return max;
             }
 
             int maxSum = Integer.MIN_VALUE; //changed from -1
@@ -40,13 +51,14 @@ public class MaxSum {
                     for (int col = 0; col < totalColumns; col++) {
                         //subtract values no longer in the rectangle
                         sum += preSum[row + 1][col] - preSum[rowStart][col];
-                        if (sum < 0) {
-                            if (minSum < sum) {
-                                minSum = sum;
+                        if (sum < 0 ) {
+                            if (minSum < sum && !allNegative) {
+                               minSum = sum;
                             }
                             sum = 0;
                             curColStart = col + 1;
-                        } else if (maxSum < sum) {
+                        } else
+                            if (maxSum < sum) {
                             maxSum = sum;
                             firstRow = rowStart;
                             lastRow = row;
