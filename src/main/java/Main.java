@@ -23,7 +23,7 @@ public class Main {
                 }
             }
             // Function call
-            System.out.println(MaxSum.MaximumSumRectangle.maxSumRectangle(matrix));
+            System.out.println( new MaxSum().maxSumRectangle(matrix));
         } catch (Exception e) {
             e.printStackTrace();
         }
