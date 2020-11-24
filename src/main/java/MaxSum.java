@@ -19,7 +19,7 @@ public class MaxSum {
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < totalRows; i++) {
             for (int j = 0; j < totalColumns; j++) {
-                max = (matrix[i][j] > max) ? matrix[i][j] : max;
+                max = Math.max(matrix[i][j], max);
                 //add running column totals for every point
                 preSum[i + 1][j] = preSum[i][j] + matrix[i][j];
 
