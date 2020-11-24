@@ -3,6 +3,11 @@ import java.lang.*;
 
 public class MaxSum {
 
+    /*
+    This code is heavily inspired by
+    https://www.geeksforgeeks.org/maximum-sum-rectangle-in-a-2d-matrix-dp-27/.
+     */
+
     // Function to find maximum sum rectangular submatrix
     public int maxSumRectangle(int[][] matrix) {
         int totalRows = matrix.length;
